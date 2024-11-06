@@ -1,0 +1,19 @@
+config:
+  target: 'http://localhost:3000/'
+  phases:
+    - duration: 15
+      arrivalRate: 20
+      name: "Poco trafico"
+    - duration: 30
+      arrivalRate: 50 # requests 
+      name: "Mucho trafico"
+  default:
+    headers:
+      Content-type: "application/json"
+scenarios:
+    - flow:
+      - loop:
+        - get:
+            url: "/"
+        - get:
+            url: "/adios"
